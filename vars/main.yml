@@ -1,0 +1,6 @@
+---
+vagrant_version : '1.7.3_x86_64'
+vagrant_deb : 'vagrant_{{ vagrant_version }}.deb'
+vagrant_rpm : 'vagrant_{{ vagrant_version }}.rpm'
+vagrant_deb_url : 'https://dl.bintray.com/mitchellh/vagrant/{{ vagrant_deb }}'
+vagrant_rpm_url : 'https://dl.bintray.com/mitchellh/vagrant/{{ vagrant_rpm }}'
