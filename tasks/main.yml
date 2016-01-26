@@ -15,3 +15,5 @@
     - vagrant-cachier
     - vagrant-mutate
     - vagrant-libvirt
+    - vagrant-smartos-zones
+    

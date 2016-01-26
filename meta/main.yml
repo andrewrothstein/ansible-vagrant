@@ -5,7 +5,7 @@ galaxy_info:
   company: BlackRock
   license:
     - MIT
-  min_ansible_version: 1.2
+  min_ansible_version: 2.0
   platforms:
     - name: EL
       versions:
@@ -13,6 +13,8 @@ galaxy_info:
     - name: Fedora
       versions:
         - 21
+        - 22
+        - 23
     - name: Ubuntu
       versions:
         - trusty
