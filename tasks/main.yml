@@ -6,14 +6,3 @@
 - name: (RedHat) install vagrant...
   when: ansible_os_family == 'RedHat'
   include: RedHat.yml
-  
-- name: install vagrant plugins
-  shell: vagrant plugin install {{item}}
-  with_items:
-    - vagrant-proxyconf
-    - vagrant-hostsupdater
-    - vagrant-cachier
-    - vagrant-mutate
-    - vagrant-libvirt
-    - vagrant-smartos-zones
-    
