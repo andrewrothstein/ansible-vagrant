@@ -1,9 +1,0 @@
----
-- name: get vagrant deb...
-  when: ansible_distribution == "Ubuntu"
-  get_url: url={{vagrant_deb_url}} dest='/tmp/{{ vagrant_deb }}'
-
-- name: install vagrant deb
-  when: ansible_distribution == "Ubuntu"
-  apt: deb='/tmp/{{ vagrant_deb }}'
-

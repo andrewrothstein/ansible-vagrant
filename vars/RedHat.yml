@@ -1,0 +1,10 @@
+---
+vagrant_libvirt_dep_pkgs:
+  - libxslt-devel
+  - libxml2-devel
+  - libvirt-devel
+  - libguestfs-tools-c
+  - ruby-devel
+vagrant_pkg : '{{ vagrant_name }}.rpm'
+vagrant_pkg_url : '{{vagrant_mirror}}/{{vagrant_version}}/{{ vagrant_rpm }}'
+vagrant_pkg_mgr: pkg

@@ -1,0 +1,10 @@
+---
+vagrant_libvirt_dep_pkgs:
+  - libxslt-dev
+  - libxml2-dev
+  - libvirt-dev
+  - zlib1g-dev
+  - ruby-dev
+vagrant_pkg : '{{ vagrant_name }}.deb'
+vagrant_pkg_url : '{{vagrant_mirror}}/{{vagrant_version}}/{{ vagrant_deb }}'
+vagrant_pkg_mgr: apt
