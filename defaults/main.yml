@@ -1,4 +1,4 @@
 ---
-vagrant_version : '1.8.1'
+vagrant_version : '1.8.5'
 vagrant_platform : 'x86_64'
 vagrant_mirror : 'https://releases.hashicorp.com/vagrant'

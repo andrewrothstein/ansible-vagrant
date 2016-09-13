@@ -6,5 +6,5 @@ vagrant_libvirt_dep_pkgs:
   - zlib1g-dev
   - ruby-dev
 vagrant_pkg : '{{ vagrant_name }}.deb'
-vagrant_pkg_url : '{{vagrant_mirror}}/{{vagrant_version}}/{{ vagrant_deb }}'
+vagrant_pkg_url : '{{vagrant_mirror}}/{{vagrant_version}}/{{ vagrant_pkg }}'
 vagrant_pkg_mgr: apt
