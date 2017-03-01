@@ -2,6 +2,6 @@
 - name: install pkg
   become: yes
   become_user: root
-  package: >-
-    name=/tmp/{{vagrant_pkg}}
-    state=present
+  package:
+    name: /tmp/{{vagrant_pkg}}
+    state: present

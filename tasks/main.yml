@@ -10,28 +10,30 @@
   become: yes
   become_user: root
   with_items: '{{vagrant_libvirt_dep_pkgs}}'
-  package: name={{item}} state=present
+  package:
+    name: '{{item}}'
+    state: present
     
 - name: download pkg
   become: yes
   become_user: root
-  get_url: >-
-    url={{vagrant_pkg_url}}
-    dest=/tmp/{{vagrant_pkg}}
-    mode=0644
+  get_url:
+    url: '{{vagrant_pkg_url}}'
+    dest: /tmp/{{vagrant_pkg}}
+    checksum: '{{vagrant_checksum}}'
+    mode: 0644
 
 - name: install pkg
   include: '{{vagrant_pkg_mgr}}.yml'
-
     
 - name: link exportfs from /usr/sbin into /usr/bin
   when: ansible_os_family == 'RedHat'
   become: yes
   become_user: root
-  file: >
-    src=/usr/sbin/exportfs
-    dest=/usr/bin/exportfs
-    state=link
+  file:
+    src: /usr/sbin/exportfs
+    dest: /usr/bin/exportfs
+    state: link
 
     
 
