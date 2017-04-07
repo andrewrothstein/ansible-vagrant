@@ -1,2 +1,4 @@
 **~
 Dockerfile.*
+*.retry
+requirements.yml

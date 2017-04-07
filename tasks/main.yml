@@ -6,8 +6,8 @@
     - "{{ansible_distribution}}.yml"
     - "{{ansible_os_family}}.yml"
 
-- name: install vagrant-libvirt dependencies
-  become: yes
+- name: install vagrants libvirt dependencies
+  become: '{{vagrant_pkg_mgr_escalate|default(True)}}'
   become_user: root
   with_items: '{{vagrant_libvirt_dep_pkgs}}'
   package:
@@ -25,7 +25,7 @@
 
 - name: install pkg
   include: '{{vagrant_pkg_mgr}}.yml'
-    
+
 - name: link exportfs from /usr/sbin into /usr/bin
   when: ansible_os_family == 'RedHat'
   become: yes
@@ -34,6 +34,4 @@
     src: /usr/sbin/exportfs
     dest: /usr/bin/exportfs
     state: link
-
-    
 
