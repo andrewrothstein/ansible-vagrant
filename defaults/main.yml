@@ -1,11 +1,11 @@
 ---
-vagrant_version : '1.9.3'
+vagrant_version : '1.9.4'
 vagrant_platform : x86_64
 
 # https://releases.hashicorp.com/vagrant/1.9.3/vagrant_1.9.3_SHA256SUMS
 vagrant_checksums:
-  deb: sha256:faff6befacc7eed3978b4b71f0dbb9c135c01d8a4d13236bda2f9ed53482d2c4
-  rpm: sha256:83e9da874398a113b7636f5a1fcf3f4c66120df6600b1b983267cb63162e85e1
-  dmg: sha256:7e08c3d204420027142d6623d2b02c5ec00f635a74b4ca7fb742e91894b942b8
+  deb: sha256:25cb7803b52db459750ff7f99889f42be789746e9cdbd951af13ba72e2e86063
+  rpm: sha256:3b6da60b65d46cde2372361c0441bc865b014f37fb24eaf6d92271c34587a34e
+  dmg: sha256:2ae186e762498c8e018efbf3452a3d368627cb7d518b26f3f445f0a3686e5a07
 
 vagrant_mirror : https://releases.hashicorp.com/vagrant

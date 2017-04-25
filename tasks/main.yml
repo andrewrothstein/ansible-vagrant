@@ -13,7 +13,7 @@
   package:
     name: '{{item}}'
     state: present
-    
+
 - name: download pkg
   become: yes
   become_user: root
@@ -34,4 +34,3 @@
     src: /usr/sbin/exportfs
     dest: /usr/bin/exportfs
     state: link
-
