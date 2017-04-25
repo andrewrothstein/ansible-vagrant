@@ -2,9 +2,13 @@
 - name: resolve platform specific vars
   include_vars: "{{item}}"
   with_first_found:
-    - "{{ansible_distribution}}-{{ansible_distribution_release}}.yml"
-    - "{{ansible_distribution}}.yml"
-    - "{{ansible_os_family}}.yml"
+    - files:
+        - "{{ansible_distribution}}-{{ansible_distribution_release}}.yml"
+        - "{{ansible_distribution}}.yml"
+        - "{{ansible_os_family}}.yml"
+      skip: true
+      paths:
+        - '{{role_path}}/vars'
 
 - name: install vagrants libvirt dependencies
   become: '{{vagrant_pkg_mgr_escalate|default(True)}}'
