@@ -6,5 +6,6 @@ vagrant_platform : x86_64
 vagrant_checksums:
   deb: sha256:faff6befacc7eed3978b4b71f0dbb9c135c01d8a4d13236bda2f9ed53482d2c4
   rpm: sha256:83e9da874398a113b7636f5a1fcf3f4c66120df6600b1b983267cb63162e85e1
+  dmg: sha256:7e08c3d204420027142d6623d2b02c5ec00f635a74b4ca7fb742e91894b942b8
 
 vagrant_mirror : https://releases.hashicorp.com/vagrant
