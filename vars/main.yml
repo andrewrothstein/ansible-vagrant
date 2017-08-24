@@ -3,6 +3,6 @@ vagrant_name : 'vagrant_{{vagrant_version}}_{{vagrant_platform}}'
 
 vagrant_pkg : '{{vagrant_name}}.{{vagrant_pkg_suffix}}'
 
-# https://releases.hashicorp.com/vagrant/1.9.6/vagrant_1.9.6_x86_64.dmg
+# https://releases.hashicorp.com/vagrant/1.9.X/vagrant_1.9.X_x86_64.dmg
 vagrant_pkg_url: '{{vagrant_mirror}}/{{vagrant_version}}/{{vagrant_pkg}}'
 vagrant_checksum: '{{vagrant_checksums[vagrant_pkg_suffix]}}'
