@@ -28,7 +28,7 @@
     mode: 0644
 
 - name: install pkg
-  include: '{{vagrant_pkg_mgr}}.yml'
+  include_tasks: '{{vagrant_pkg_mgr}}.yml'
 
 - name: link exportfs from /usr/sbin into /usr/bin
   when: ansible_os_family == 'RedHat'
