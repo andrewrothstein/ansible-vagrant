@@ -30,6 +30,14 @@
 - name: install pkg
   include_tasks: '{{vagrant_pkg_mgr}}.yml'
 
+- name: install nfs-utils for exportfs
+  when: ansible_os_family == 'RedHat'
+  become: yes
+  become_user: root
+  package:
+    name: nfs-utils
+    state: present
+
 - name: link exportfs from /usr/sbin into /usr/bin
   when: ansible_os_family == 'RedHat'
   become: yes

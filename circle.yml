@@ -14,6 +14,7 @@ test:
     - ? | 
           circle-matrix <<"EHD"
             env:
+              - OS=centos_6
               - OS=centos_7
               - OS=fedora_23
               - OS=fedora_24
@@ -23,6 +24,7 @@ test:
               - OS=debian_stretch
               - OS=ubuntu_trusty
               - OS=ubuntu_xenial
+              - OS=ubuntu_bionic
 
             script:
               - >-
