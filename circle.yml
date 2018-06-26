@@ -23,6 +23,7 @@ test:
               - OS=debian_stretch
               - OS=ubuntu_trusty
               - OS=ubuntu_xenial
+              - OS=ubuntu_bionic
 
             script:
               - >-
