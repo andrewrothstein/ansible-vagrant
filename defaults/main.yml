@@ -1,6 +1,6 @@
 ---
-vagrant_version : '2.1.1'
-vagrant_platform : x86_64
+vagrant_version: '2.2.0'
+vagrant_platform: x86_64
 
 vagrant_checksums:
   # https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_SHA256SUMS
@@ -33,5 +33,11 @@ vagrant_checksums:
       deb: sha256:cee18b6f3b1209ea5878c22cfd84a9f0004f20ef146cb7a18aada19162928a0f
       dmg: sha256:9d1798396f05b8c39f65f1e7878f088302546a5baa59846fbf461589d76e3e1f
       rpm: sha256:27193a3b9354590fe37fb2b3d0b63baaaff66ee17e996bf614ee80ea2d2b4462
+  # https://releases.hashicorp.com/vagrant/2.2.0/vagrant_2.2.0_SHA256SUMS
+  '2.2.0':
+    x86_64:
+      deb: sha256:f1caad948a8f545d5d7d2442396fe8a3bcdfd0fc8f643bd0576c81942e7be43b
+      dmg: sha256:016bf5470cf940df50dceae7fd5f0d333617ca42835f106846c91669b3305255
+      rpm: sha256:d37c543e90926c375ad00484e069d7afb1d8878eea2f648b40be16abc70aa2c5
 
-vagrant_mirror : https://releases.hashicorp.com/vagrant
+vagrant_mirror: https://releases.hashicorp.com/vagrant
