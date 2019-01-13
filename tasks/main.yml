@@ -1,34 +1,34 @@
 ---
 - name: resolve platform specific vars
-  include_vars: "{{item}}"
+  include_vars: "{{ item }}"
   with_first_found:
     - files:
-        - "{{ansible_distribution}}-{{ansible_distribution_release}}.yml"
-        - "{{ansible_distribution}}.yml"
-        - "{{ansible_os_family}}.yml"
+        - "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+        - "{{ ansible_distribution }}.yml"
+        - "{{ ansible_os_family }}.yml"
       skip: true
       paths:
-        - '{{role_path}}/vars'
+        - '{{ role_path }}/vars'
 
 - name: install vagrants libvirt dependencies
-  become: '{{vagrant_pkg_mgr_escalate|default(True)}}'
+  become: '{{ vagrant_pkg_mgr_escalate|default(True) }}'
   become_user: root
-  with_items: '{{vagrant_libvirt_dep_pkgs}}'
+  with_items: '{{ vagrant_libvirt_dep_pkgs }}'
   package:
-    name: '{{item}}'
+    name: '{{ item }}'
     state: present
 
 - name: download pkg
   become: yes
   become_user: root
   get_url:
-    url: '{{vagrant_pkg_url}}'
-    dest: /tmp/{{vagrant_pkg}}
-    checksum: '{{vagrant_checksum}}'
+    url: '{{ vagrant_pkg_url }}'
+    dest: /tmp/{{ vagrant_pkg }}
+    checksum: '{{ vagrant_checksum }}'
     mode: 0644
 
 - name: install pkg
-  include_tasks: '{{vagrant_pkg_mgr}}.yml'
+  include_tasks: '{{ vagrant_pkg_mgr }}.yml'
 
 - name: install nfs-utils for exportfs
   when: ansible_os_family == 'RedHat'
