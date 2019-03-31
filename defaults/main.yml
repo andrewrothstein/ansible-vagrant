@@ -47,7 +47,7 @@ vagrant_checksums:
       rpm: sha256:3bda785e80ddf184b7698f1593d4b95acda2830395a1b4ab2b08cd636c334fdd
   # https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_SHA256SUMS
   '2.2.4':
-    x864_64:
+    x86_64:
       deb: sha256:1ffb66020b580492ebf9189af8a48c48cdb31825be0717d600518a881584fe4a
       dmg: sha256:a09a2f0fb3fcbd4cfb41c7812c01605173f64056449c3dbcc513b4211e9c1e8d
       rpm: sha256:660dfd87b2cd893f2ce73748fdb19c6792d6c4232ca242d416370644ce233442
