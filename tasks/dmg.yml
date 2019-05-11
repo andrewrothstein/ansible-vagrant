@@ -2,7 +2,7 @@
 - name: attach
   become: yes
   become_user: root
-  command: hdiutil attach /tmp/{{ vagrant_pkg }}
+  command: hdiutil attach {{ vagrant_pkg_download_dir }}/{{ vagrant_pkg }}
   args:
     creates: '{{ vagrant_dmg_volume }}'
 

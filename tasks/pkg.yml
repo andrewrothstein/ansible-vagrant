@@ -3,5 +3,5 @@
   become: yes
   become_user: root
   package:
-    name: /tmp/{{ vagrant_pkg }}
+    name: '{{ vagrant_pkg_download_dir }}/{{ vagrant_pkg }}'
     state: present
