@@ -3,5 +3,5 @@
   become: yes
   become_user: root
   apt:
-    deb: /tmp/{{ vagrant_pkg }}
+    deb: '{{ vagrant_pkg_download_dir }}/{{ vagrant_pkg }}'
     state: present

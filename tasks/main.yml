@@ -18,12 +18,21 @@
     name: '{{ item }}'
     state: present
 
+- name: create package download dir
+  file:
+    path: '{{ vagrant_pkg_download_dir }}'
+    state: directory
+    owner: '{{ ansible_user }}'
+    mode: "0755"
+  become: True
+  when: vagrant_create_pkg_download_dir
+
 - name: download pkg
-  become: yes
+  become: '{{ vagrant_pkg_download_escalate }}'
   become_user: root
   get_url:
     url: '{{ vagrant_pkg_url }}'
-    dest: /tmp/{{ vagrant_pkg }}
+    dest: '{{ vagrant_pkg_download_dir }}/{{ vagrant_pkg }}'
     checksum: '{{ vagrant_checksum }}'
     mode: 0644
 
