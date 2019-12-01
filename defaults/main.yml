@@ -1,6 +1,24 @@
 ---
-vagrant_version: '2.2.5'
+vagrant_version: '2.2.6'
 vagrant_platform: x86_64
+
+vagrant_mirror: https://releases.hashicorp.com/vagrant
+
+# The following variables can be changed to alter where the vagrant
+# package is downloaded to before being installed.
+# By default the package is downloaded to /tmp
+# If you want to avoid spurious reporting of changes you'll want to adjust
+# this so that the role does not report a change just because the download
+# was deleted from the tmp directory.
+vagrant_pkg_download_dir: /tmp
+
+# Whether to create the download directory, if created it will be owned
+# by the ansible_user rather than root to allow for non-escalated download
+vagrant_create_pkg_download_dir: False
+
+# Whether or not to escalate when downloading, This can only be false if
+# vagrant_pkg_download_dir is writable by the ansible_user.
+vagrant_pkg_download_escalate: "{{ not vagrant_create_pkg_download_dir }}"
 
 vagrant_checksums:
   # https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_SHA256SUMS
@@ -60,21 +78,12 @@ vagrant_checksums:
     i686:
       deb: sha256:e6553b7a81d063ccef01cada4d20a7e8a49a5e192d4376c938116b1b04739c67
       rpm: sha256:cafcd585b45539fb4214ae9a26d3b4fdc73d7393488452d5b57b3a182d8b716c
-
-vagrant_mirror: https://releases.hashicorp.com/vagrant
-
-# The following variables can be changed to alter where the vagrant
-# package is downloaded to before being installed.
-# By default the package is downloaded to /tmp
-# If you want to avoid spurious reporting of changes you'll want to adjust
-# this so that the role does not report a change just because the download
-# was deleted from the tmp directory.
-vagrant_pkg_download_dir: /tmp
-
-# Whether to create the download directory, if created it will be owned
-# by the ansible_user rather than root to allow for non-escalated download
-vagrant_create_pkg_download_dir: False
-
-# Whether or not to escalate when downloading, This can only be false if
-# vagrant_pkg_download_dir is writable by the ansible_user.
-vagrant_pkg_download_escalate: "{{ not vagrant_create_pkg_download_dir }}"
+  # https://releases.hashicorp.com/vagrant/2.2.6/vagrant_2.2.6_SHA256SUMS
+  '2.2.6':
+    x86_64:
+      deb: sha256:d5070fa1005a6073b1f923e4726066a0d95edc94c3034212115a9e3423caa832
+      dmg: sha256:d5398ec0a29938017c27e98c5a4445ed64f131caa115265da61c795229ef47f7
+      rpm: sha256:ed6e2741b80d82d58cfe2ce182360a964cee60245de050183cf0bef4917e8b27
+    i686:
+      deb: sha256:71b3c0238ed3b85b24bd9cfe4eb0e45e0d1d9f70af2ffad8fae949f2cf88b0aa
+      rpm: sha256:f855d975f4e1a0ca7fc068263e2f40174eafa81116aea6ca9bf6bbfca9d31829

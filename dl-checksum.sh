@@ -1,31 +1,38 @@
 #!/usr/bin/env sh
-VER=2.2.5
+#set -x
 DIR=~/Downloads
-SHASUMS=vagrant_${VER}_SHA256SUMS
-URL=https://releases.hashicorp.com/vagrant/$VER/$SHASUMS
-LSHASUMS=$DIR/$SHASUMS
-
-if [ ! -e $LSHASUMS ]
-then
-    wget -q -O $LSHASUMS $URL
-fi
+MIRROR=https://releases.hashicorp.com/vagrant
 
 ripsha()
 {
-    PLATFORM=$1
-    PKG=$2
-    FILE=vagrant_${VER}_${PLATFORM}.$PKG
-    printf "    %s: sha256:%s\n" $PKG `fgrep $FILE $LSHASUMS | awk '{print $1}'`
+    local ver=$1
+    local lshasums=$2
+    local arch=$3
+    local pkg=$4
+    local file=vagrant_${ver}_${arch}.$pkg
+    printf "      %s: sha256:%s\n" $pkg `fgrep $file $lshasums | awk '{print $1}'`
 }
 
-printf "# %s\n" $URL
-printf "'%s':\n" $VER
-printf "  x86_64:\n"
-ripsha x86_64 deb
-ripsha x86_64 dmg
-ripsha x86_64 rpm
-printf "  i686:\n"
-ripsha i686 deb
-ripsha i686 rpm
+dl_ver() {
+    local ver=$1
+    local shasums=vagrant_${ver}_SHA256SUMS
+    local url=$MIRROR/$ver/$shasums
+    local lshasums=$DIR/$shasums
 
+    if [ ! -e $lshasums ];
+    then
+        wget -q -O $lshasums $url
+    fi
 
+    printf "  # %s\n" $url
+    printf "  '%s':\n" $ver
+    printf "    x86_64:\n"
+    ripsha $ver $lshasums x86_64 deb
+    ripsha $ver $lshasums x86_64 dmg
+    ripsha $ver $lshasums x86_64 rpm
+    printf "    i686:\n"
+    ripsha $ver $lshasums i686 deb
+    ripsha $ver $lshasums i686 rpm
+}
+
+dl_ver ${1:-2.2.6}
