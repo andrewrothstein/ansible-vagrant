@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 #set -x
-DIR=~/Downloads
+DIR=$(mktemp -d)
 MIRROR=https://releases.hashicorp.com/vagrant
 
 ripsha()
