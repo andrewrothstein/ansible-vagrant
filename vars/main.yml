@@ -2,7 +2,7 @@
 vagrant_name: 'vagrant_{{ vagrant_version }}_{{ vagrant_platform }}'
 
 vagrant_pkg: '{{ vagrant_name }}.{{ vagrant_pkg_suffix }}'
-vagrant_pkg_fq: '{{ vargrant_pkg_download_dir }}/{{ vagrant_pkg }}'
+vagrant_pkg_fq: '{{ vagrant_pkg_download_dir }}/{{ vagrant_pkg }}'
 
 vagrant_pkg_url: '{{ vagrant_mirror }}/{{ vagrant_version }}/{{ vagrant_pkg }}'
 vagrant_checksum: '{{ vagrant_checksums[vagrant_version][vagrant_platform][vagrant_pkg_suffix] }}'
