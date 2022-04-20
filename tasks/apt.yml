@@ -1,7 +1,7 @@
 ---
-- name: installing a deb...
-  become: yes
+- name: (apt/deb) installing {{ vagrant_pkg_fq }}
+  become: true
   become_user: root
   apt:
-    deb: '{{ vagrant_pkg_download_dir }}/{{ vagrant_pkg }}'
+    deb: '{{ vagrant_pkg_fq }}'
     state: present

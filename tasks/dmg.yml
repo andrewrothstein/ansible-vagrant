@@ -1,12 +1,12 @@
 ---
-- name: attach
-  become: yes
+- name: attaching {{ vagrant_pkg_fq }}
+  become: true
   become_user: root
-  command: hdiutil attach {{ vagrant_pkg_download_dir }}/{{ vagrant_pkg }}
+  command: hdiutil attach {{ vagrant_pkg_fq }}
   args:
     creates: '{{ vagrant_dmg_volume }}'
 
-- name: install
-  become: yes
+- name: installing pkg {{ vagrant_dmg_pkg_path }}
+  become: true
   become_user: root
-  command: installer -pkg '{{ vagrant_dmg_pkg_path|to_json }}' -target 
+  command: installer -pkg {{ vagrant_dmg_pkg_path | to_json }} -target 

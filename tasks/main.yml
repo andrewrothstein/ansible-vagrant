@@ -1,57 +1,48 @@
 ---
 - name: resolve platform specific vars
-  include_vars: "{{ item }}"
+  include_vars: '{{ item }}'
   with_first_found:
     - files:
-        - "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
-        - "{{ ansible_distribution }}.yml"
-        - "{{ ansible_os_family }}.yml"
+        - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
       skip: true
       paths:
         - '{{ role_path }}/vars'
 
-- name: install vagrants libvirt dependencies
-  become: '{{ vagrant_pkg_mgr_escalate|default(True) }}'
-  become_user: root
-  with_items: '{{ vagrant_libvirt_dep_pkgs }}'
-  package:
-    name: '{{ item }}'
-    state: present
-
-- name: create package download dir
+- name: mkdir {{ vagrant_pkg_download_dir }}
   file:
     path: '{{ vagrant_pkg_download_dir }}'
     state: directory
     owner: '{{ ansible_user }}'
-    mode: "0755"
-  become: True
+    mode: '0755'
+  become: true
   when: vagrant_create_pkg_download_dir
 
-- name: download pkg
+- name: downloading {{ vagrant_pkg_url }} to {{ vagrant_pkg_fq }}
   become: '{{ vagrant_pkg_download_escalate }}'
   become_user: root
   get_url:
     url: '{{ vagrant_pkg_url }}'
-    dest: '{{ vagrant_pkg_download_dir }}/{{ vagrant_pkg }}'
+    dest: '{{ vagrant_pkg_fq}}'
     checksum: '{{ vagrant_checksum }}'
     mode: 0644
 
 - name: install pkg
   include_tasks: '{{ vagrant_pkg_mgr }}.yml'
 
-- name: install nfs-utils for exportfs
-  when: ansible_os_family == 'RedHat'
-  become: yes
-  become_user: root
-  package:
-    name: nfs-utils
-    state: present
-
-- name: link exportfs from /usr/sbin into /usr/bin
-  when: ansible_os_family == 'RedHat'
-  become: yes
-  become_user: root
-  file:
-    src: /usr/sbin/exportfs
-    dest: /usr/bin/exportfs
-    state: link
+- when: ansible_os_family == 'RedHat'
+  block:
+    - name: install nfs-utils for exportfs
+      become: true
+      become_user: root
+      package:
+        name: nfs-utils
+        state: present
+    - name: link exportfs from /usr/sbin into /usr/bin
+      become: true
+      become_user: root
+      file:
+        src: /usr/sbin/exportfs
+        dest: /usr/bin/exportfs
+        state: link

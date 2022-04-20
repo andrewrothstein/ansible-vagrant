@@ -1,5 +1,6 @@
 ---
-vagrant_version: 2.2.18
+vagrant_version: 2.2.19
+
 vagrant_platform: x86_64
 
 vagrant_mirror: https://releases.hashicorp.com/vagrant
@@ -14,7 +15,7 @@ vagrant_pkg_download_dir: /tmp
 
 # Whether to create the download directory, if created it will be owned
 # by the ansible_user rather than root to allow for non-escalated download
-vagrant_create_pkg_download_dir: False
+vagrant_create_pkg_download_dir: false
 
 # Whether or not to escalate when downloading, This can only be false if
 # vagrant_pkg_download_dir is writable by the ansible_user.
@@ -191,7 +192,20 @@ vagrant_checksums:
     x86_64:
       deb: sha256:718917f34c3e01167fa94471c790a248b2922a97c995eb248a9ac7181dd8697c
       dmg: sha256:b4e8103aabdf29f18f592cd6de4fa03bf182fbc192a0757b5e18156cb18fa672
+      msi: sha256:8ce913bee9debcbf39f313f4255e56f37dac5281cd62458c0c0040e5c76ee93e
       rpm: sha256:d9afd045e552d304ca167922b8a701d3ae77ca0013ec7a26135c9dcdbd10d372
     i686:
       deb: sha256:4837cbaf6986fcac9e54319159694cff18478fb3fe2221cb2e3044b494762cac
+      msi: sha256:8a82e4185aab1bc801d0ddfeee1ee7a64931500df0151a8048cbad32e467a89c
       rpm: sha256:ed7f370daf7432528d6856917bde7417a50756641af433e0bcf362e3d6b7d41c
+  # https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_SHA256SUMS
+  '2.2.19':
+    x86_64:
+      deb: sha256:804f8272b0f076929ce905904f4326cb45a88f985962064fc764a4b1a40cc0d9
+      dmg: sha256:6307be217813a11c9e106448bf232803031e434a08c8b2df8c62fdc9e8543845
+      msi: sha256:95b4c9195ad62f06e13e68f2f0814d9a8b3a37f9e24a7bfe71b64f44ac6307c8
+      rpm: sha256:990e8d2159032915f21c0f1ccdcbca1a394f7937e06e43dc1dabe605d208dc20
+    i686:
+      deb: sha256:ae6791c31ed641457237e25ab3161a375d69dcfc7b218ff55dbc6f42909b47d3
+      msi: sha256:93557f77dfb068b2dd83a4991e07b8caa4b28fced6c48dbf632f1ffe6308353e
+      rpm: sha256:4359863de4491189b1fdd2833b76e37ad191ee6dd699f5e922b2b6b80adf36fe

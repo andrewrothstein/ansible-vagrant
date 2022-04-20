@@ -10,7 +10,7 @@ ripsha()
     local arch=$3
     local pkg=$4
     local file=vagrant_${ver}_${arch}.$pkg
-    printf "      %s: sha256:%s\n" $pkg `fgrep $file $lshasums | awk '{print $1}'`
+    printf "      %s: sha256:%s\n" $pkg $(grep $file $lshasums | awk '{print $1}')
 }
 
 dl_ver() {
@@ -21,7 +21,7 @@ dl_ver() {
 
     if [ ! -e $lshasums ];
     then
-        wget -q -O $lshasums $url
+        curl -sSLf -o $lshasums $url
     fi
 
     printf "  # %s\n" $url
@@ -29,10 +29,12 @@ dl_ver() {
     printf "    x86_64:\n"
     ripsha $ver $lshasums x86_64 deb
     ripsha $ver $lshasums x86_64 dmg
+    ripsha $ver $lshasums x86_64 msi
     ripsha $ver $lshasums x86_64 rpm
     printf "    i686:\n"
     ripsha $ver $lshasums i686 deb
+    ripsha $ver $lshasums i686 msi
     ripsha $ver $lshasums i686 rpm
 }
 
-dl_ver ${1:-2.2.18}
+dl_ver ${1:-2.2.19}

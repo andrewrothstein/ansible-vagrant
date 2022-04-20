@@ -1,7 +1,7 @@
 ---
-- name: install pkg
-  become: yes
+- name: (pkg) installing {{ vagrant_pkg_fq }}
+  become: true
   become_user: root
   package:
-    name: '{{ vagrant_pkg_download_dir }}/{{ vagrant_pkg }}'
+    name: '{{ vagrant_pkg_fq }}'
     state: present
