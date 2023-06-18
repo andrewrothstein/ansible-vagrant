@@ -32,13 +32,13 @@
 - when: ansible_os_family == 'RedHat'
   block:
     - name: install nfs-utils for exportfs
-      become: true
+      become: '{{ vagrant_escalate }}'
       become_user: root
       package:
         name: nfs-utils
         state: present
     - name: link exportfs from /usr/sbin into /usr/bin
-      become: true
+      become: '{{ vagrant_escalate }}'
       become_user: root
       file:
         src: /usr/sbin/exportfs

@@ -1,5 +1,5 @@
 ---
-vagrant_pkg_mgr: pkg
+vagrant_pkg_mgr: rpm
 vagrant_arch_map:
   x86_64: x86_64
   x86_32: i686
