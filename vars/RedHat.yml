@@ -1,3 +1,9 @@
 ---
 vagrant_pkg_mgr: pkg
+vagrant_arch_map:
+  x86_64: x86_64
+  x86_32: i686
+
+vagrant_pkg_infix1: '-'
+vagrant_pkg_infix2: .
 vagrant_pkg_suffix: rpm

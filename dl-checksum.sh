@@ -1,20 +1,55 @@
 #!/usr/bin/env sh
-#set -x
+set -e
 DIR=~/Downloads
 MIRROR=https://releases.hashicorp.com/vagrant
+
+# https://releases.hashicorp.com/vagrant/2.3.0/vagrant_2.3.0_SHA256SUMS
+# https://releases.hashicorp.com/vagrant/2.3.0/vagrant-2.3.0-1.x86_64.rpm
+# https://releases.hashicorp.com/vagrant/2.3.0/vagrant-2.3.0-1.i686.rpm
+# https://releases.hashicorp.com/vagrant/2.3.0/vagrant_2.3.0-1_amd64.deb
+# https://releases.hashicorp.com/vagrant/2.3.0/vagrant_2.3.0-1_i686.deb
+# https://releases.hashicorp.com/vagrant/2.3.0/vagrant_2.3.0_darwin_amd64.dmg
+
+pkgfile() {
+    local pkg=$1
+    local infix1=$2
+    local infix2=$3
+    local ver=$4
+    local patch_suffix=$5
+    local arch=$6
+    echo "vagrant${infix1}${ver}${patch_suffix}${infix2}${arch}.${pkg}"
+}
+
+rpm() {
+    local ver=$1
+    local patch_suffix=$2
+    local arch=$3
+    pkgfile rpm "-" "." $ver $patch_suffix $arch
+}
+
+deb() {
+    local ver=$1
+    local patch_suffix=$2
+    local arch=$3
+    pkgfile deb "_" "_" $ver $patch_suffix $arch
+}
 
 ripsha()
 {
     local ver=$1
     local lshasums=$2
-    local arch=$3
-    local pkg=$4
-    local file=vagrant_${ver}_${arch}.$pkg
+    local pkg=$3
+    local file=$4
+    printf "      # %s/%s/%s\n" $MIRROR $ver $file
     printf "      %s: sha256:%s\n" $pkg $(grep $file $lshasums | awk '{print $1}')
 }
 
 dl_ver() {
-    local ver=$1
+    local major_ver=$1
+    local minor_ver=$2
+    local patch_ver=$3
+    local patch_suffix=$4
+    local ver="${major_ver}.${minor_ver}.${patch_ver}"
     local shasums=vagrant_${ver}_SHA256SUMS
     local url=$MIRROR/$ver/$shasums
     local lshasums=$DIR/$shasums
@@ -25,16 +60,20 @@ dl_ver() {
     fi
 
     printf "  # %s\n" $url
-    printf "  '%s':\n" $ver
+    printf "  '%s%s':\n" $ver $patch_suffix
     printf "    x86_64:\n"
-    ripsha $ver $lshasums x86_64 deb
-    ripsha $ver $lshasums x86_64 dmg
-    ripsha $ver $lshasums x86_64 msi
-    ripsha $ver $lshasums x86_64 rpm
-    printf "    i686:\n"
-    ripsha $ver $lshasums i686 deb
-    ripsha $ver $lshasums i686 msi
-    ripsha $ver $lshasums i686 rpm
+    ripsha $ver $lshasums deb $(deb $ver -1 amd64)
+    ripsha $ver $lshasums rpm $(rpm $ver -1 x86_64)
+    printf "    x86_32:\n"
+    ripsha $ver $lshasums deb $(deb $ver -1 i686)
+    ripsha $ver $lshasums rpm $(rpm $ver -1 i686)
 }
 
-dl_ver ${1:-2.2.19}
+dl_ver 2 3 0 -1
+dl_ver 2 3 1 -1
+dl_ver 2 3 2 -1
+dl_ver 2 3 3 -1
+dl_ver 2 3 4 -1
+dl_ver 2 3 5 -1
+dl_ver 2 3 6 -1
+dl_ver 2 3 7 -1

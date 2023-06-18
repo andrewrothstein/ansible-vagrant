@@ -1,7 +1,7 @@
 ---
-- name: (apt/deb) installing {{ vagrant_pkg_fq }}
+- name: (apt/deb) installing {{ vagrant_tmp_pkg }}
   become: true
   become_user: root
   apt:
-    deb: '{{ vagrant_pkg_fq }}'
+    deb: '{{ vagrant_tmp_pkg }}'
     state: present

@@ -1,6 +1,6 @@
 ---
 vagrant_pkg_mgr: dmg
-vagrant_pkg_mgr_escalate: False
+vagrant_escalate: false
 vagrant_dmg_volume: /Volumes/VirtualBox
 vagrant_dmg_pkg_path: '{{ vagrant_dmg_volume }}/VirtualBox.pkg'
 vagrant_dmg_install_volume: /Volumes/Macintosh HD

@@ -1,8 +1,11 @@
 ---
-vagrant_name: 'vagrant_{{ vagrant_version }}_{{ vagrant_platform }}'
+vagrant_q_ver: '{{ vagrant_ver.major }}.{{ vagrant_ver.minor }}.{{ vagrant_ver.patch }}'
+vagrant_fq_ver: '{{ vagrant_q_ver }}{{ vagrant_ver.patch_suffix }}'
+vagrant_arch: '{{ vagrant_arch_map[ansible_architecture] }}'
+vagrant_name: 'vagrant{{ vagrant_pkg_infix1 }}{{ vagrant_fq_ver }}{{ vagrant_pkg_infix2 }}{{ vagrant_arch }}'
 
 vagrant_pkg: '{{ vagrant_name }}.{{ vagrant_pkg_suffix }}'
-vagrant_pkg_fq: '{{ vagrant_pkg_download_dir }}/{{ vagrant_pkg }}'
+vagrant_tmp_pkg: '{{ vagrant_tmp_dir | default("/tmp") }}/{{ vagrant_pkg }}'
 
-vagrant_pkg_url: '{{ vagrant_mirror }}/{{ vagrant_version }}/{{ vagrant_pkg }}'
-vagrant_checksum: '{{ vagrant_checksums[vagrant_version][vagrant_platform][vagrant_pkg_suffix] }}'
+vagrant_pkg_url: '{{ vagrant_mirror }}/{{ vagrant_q_ver }}/{{ vagrant_pkg }}'
+vagrant_checksum: '{{ vagrant_checksums[vagrant_fq_ver][ansible_architecture][vagrant_pkg_suffix] }}'

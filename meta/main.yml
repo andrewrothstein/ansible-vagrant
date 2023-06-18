@@ -10,20 +10,19 @@ galaxy_info:
     - name: EL
       versions:
         - 8
+        - 9
     - name: Fedora
       versions:
-        - 35
-        - 36
+        - 37
+        - 38
     - name: Debian
       versions:
+        - bookworm
         - bullseye
-        - buster
     - name: Ubuntu
       versions:
-        - bionic
         - focal
+        - jammy
   galaxy_tags:
     - virtualization
   role_name: vagrant
-
-dependencies: []

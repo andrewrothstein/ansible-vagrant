@@ -1,3 +1,9 @@
 ---
 vagrant_pkg_mgr: apt
+vagrant_arch_map:
+  x86_64: amd64
+  x86_32: i686
+
+vagrant_pkg_infix1: _
+vagrant_pkg_infix2: _
 vagrant_pkg_suffix: deb

@@ -1,8 +1,9 @@
 ---
+- debian_bookworm
 - debian_bullseye
-- debian_buster
-- fedora_35
-- fedora_36
+- fedora_37
+- fedora_38
 - rockylinux_8
-- ubuntu_bionic
+- rockylinux_9
 - ubuntu_focal
+- ubuntu_jammy
