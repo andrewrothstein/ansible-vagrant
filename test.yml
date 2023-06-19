@@ -2,3 +2,9 @@
 - hosts: all
   roles:
     - role: '{{ playbook_dir }}'
+  tasks:
+    - command: vagrant --version
+      register: vagrant_test_output
+    - name: vagrant --version
+      debug:
+        msg: '{{ vagrant_test_output.stdout }}'

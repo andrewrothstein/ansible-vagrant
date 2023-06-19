@@ -1,5 +1,5 @@
 ---
-- name: adding rpm key
+- name: adding rpm key {{ vagrant_rpm_key }}
   become: '{{ vagrant_escalate }}'
   become_user: root
   rpm_key:
@@ -8,6 +8,4 @@
 - name: installing {{ vagrant_tmp_pkg }}
   become: '{{ vagrant_escalate }}'
   become_user: root
-  package:
-    name: '{{ vagrant_tmp_pkg }}'
-    state: present
+  command: rpm -i {{ vagrant_tmp_pkg }}
