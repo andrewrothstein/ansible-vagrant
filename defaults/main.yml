@@ -1,8 +1,8 @@
 ---
 vagrant_ver:
   major: 2
-  minor: 3
-  patch: 7
+  minor: 4
+  patch: 0
   patch_suffix: -1
 
 vagrant_escalate: true
@@ -108,3 +108,15 @@ vagrant_checksums:
       deb: sha256:34c336929a85738aa9acf25758c5dc46426636bfa8caee47d00351c3233ac31c
       # https://releases.hashicorp.com/vagrant/2.3.7/vagrant-2.3.7-1.i686.rpm
       rpm: sha256:2c553e5564579d26656cb218f56614db1345ebf5961384c9e73aea17562a516b
+  # https://releases.hashicorp.com/vagrant/2.4.0/vagrant_2.4.0_SHA256SUMS
+  '2.4.0-1':
+    x86_64:
+      # https://releases.hashicorp.com/vagrant/2.4.0/vagrant_2.4.0-1_amd64.deb
+      deb: sha256:e04916750205819c90e38acf639ab12af89fd4593dcc6ef38c33c306666f73c5
+      # https://releases.hashicorp.com/vagrant/2.4.0/vagrant-2.4.0-1.x86_64.rpm
+      rpm: sha256:37255ab7b903695863d3a6ee77cb9c660f34f14839a133d50f3a8672bffe4807
+    x86_32:
+      # https://releases.hashicorp.com/vagrant/2.4.0/vagrant_2.4.0-1_i686.deb
+      deb: sha256:87be2e0db61fd2c7ab60fbd3814a67e3ccdd0f7b04f59adfaf54ec181b8e0ac5
+      # https://releases.hashicorp.com/vagrant/2.4.0/vagrant-2.4.0-1.i686.rpm
+      rpm: sha256:0061505c8aae8a83df525374403af021270d331253a82ff93909930c8a2c4ee7
