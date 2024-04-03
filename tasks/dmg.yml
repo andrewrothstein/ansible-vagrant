@@ -1,12 +1,13 @@
 ---
-- name: attaching {{ vagrant_pkg_fq }}
+- name: Attaching {{ vagrant_pkg_fq }}
   become: true
   become_user: root
-  command: hdiutil attach {{ vagrant_pkg_fq }}
+  ansible.builtin.command: hdiutil attach {{ vagrant_pkg_fq }}
   args:
     creates: '{{ vagrant_dmg_volume }}'
 
-- name: installing pkg {{ vagrant_dmg_pkg_path }}
+- name: Installing pkg {{ vagrant_dmg_pkg_path }}
   become: true
   become_user: root
-  command: installer -pkg {{ vagrant_dmg_pkg_path | to_json }} -target 
+  ansible.builtin.command: installer -pkg {{ vagrant_dmg_pkg_path | to_json }} -target
+  changed_when: false

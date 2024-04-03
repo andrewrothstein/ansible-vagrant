@@ -1,13 +1,13 @@
 ---
-- name: installing gpg key
+- name: Installing gpg key
   become: '{{ vagrant_escalate }}'
   become_user: root
-  apt_key:
+  ansible.builtin.apt_key:
     url: '{{ vagrant_apt_key }}'
     state: present
-- name: installing {{ vagrant_tmp_pkg }}
+- name: Installing {{ vagrant_tmp_pkg }}
   become: '{{ vagrant_escalate }}'
   become_user: root
-  apt:
+  ansible.builtin.apt:
     deb: '{{ vagrant_tmp_pkg }}'
     state: present

@@ -1,27 +1,28 @@
 ---
 galaxy_info:
   author: Andrew Rothstein
-  description: vagrant role
   company: BlackRock
+  description: vagrant role
+  galaxy_tags:
+    - virtualization
   license: MIT
-  min_ansible_version: 2.4
+  min_ansible_version: '2.4'
+  namespace: andrewrothstein
   platforms:
-    - name: EL
-      versions:
-        - 8
-        - 9
-    - name: Fedora
-      versions:
-        - 38
-        - 39
     - name: Debian
       versions:
         - bookworm
         - bullseye
+    - name: EL
+      versions:
+        - '8'
+        - '9'
+    - name: Fedora
+      versions:
+        - '38'
+        - '39'
     - name: Ubuntu
       versions:
         - focal
         - jammy
-  galaxy_tags:
-    - virtualization
   role_name: vagrant

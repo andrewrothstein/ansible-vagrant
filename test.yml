@@ -1,10 +1,13 @@
 ---
-- hosts: all
+- name: Testing andrewrothstein.vagrant
+  hosts: all
   roles:
     - role: '{{ playbook_dir }}'
   tasks:
-    - command: vagrant --version
+    - name: Executing 'vagrant --version'
+      ansible.builtin.command: vagrant --version
+      changed_when: false
       register: vagrant_test_output
-    - name: vagrant --version
-      debug:
+    - name: Output from 'vagrant --version'
+      ansible.builtin.debug:
         msg: '{{ vagrant_test_output.stdout }}'

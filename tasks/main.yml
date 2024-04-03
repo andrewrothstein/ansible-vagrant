@@ -1,8 +1,9 @@
 ---
-- include_role:
+- name: Installing andrewrothstein.gpg
+  ansible.builtin.include_role:
     name: andrewrothstein.gpg
-- name: resolve platform specific vars
-  include_vars: '{{ item }}'
+- name: Resolve platform specific vars
+  ansible.builtin.include_vars: '{{ item }}'
   with_first_found:
     - files:
         - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
@@ -12,36 +13,38 @@
       paths:
         - '{{ role_path }}/vars'
 
-- name: downloading {{ vagrant_pkg_url }} to {{ vagrant_tmp_pkg }}
+- name: Downloading {{ vagrant_pkg_url }} to {{ vagrant_tmp_pkg }}
   become: '{{ vagrant_escalate }}'
   become_user: root
-  get_url:
+  ansible.builtin.get_url:
     url: '{{ vagrant_pkg_url }}'
     dest: '{{ vagrant_tmp_pkg }}'
     checksum: '{{ vagrant_checksum }}'
-    mode: 0644
+    mode: '644'
 
-- include_tasks: '{{ vagrant_pkg_mgr }}.yml'
+- name: Installing with {{ vagrant_pkg_mgr }}
+  ansible.builtin.include_tasks: '{{ vagrant_pkg_mgr }}.yml'
 
-- name: rm -f {{ vagrant_tmp_pkg }}
+- name: Rm -f {{ vagrant_tmp_pkg }}
   become: '{{ vagrant_escalate }}'
   become_user: root
-  file:
+  ansible.builtin.file:
     path: '{{ vagrant_tmp_pkg }}'
     state: absent
 
-- when: ansible_os_family == 'RedHat'
+- name: NFS stuffs for RedHat OSes
+  when: ansible_os_family == 'RedHat'
   block:
-    - name: install nfs-utils for exportfs
+    - name: Install nfs-utils for exportfs
       become: '{{ vagrant_escalate }}'
       become_user: root
-      package:
+      ansible.builtin.package:
         name: nfs-utils
         state: present
-    - name: link exportfs from /usr/sbin into /usr/bin
+    - name: Link exportfs from /usr/sbin into /usr/bin
       become: '{{ vagrant_escalate }}'
       become_user: root
-      file:
+      ansible.builtin.file:
         src: /usr/sbin/exportfs
         dest: /usr/bin/exportfs
         state: link

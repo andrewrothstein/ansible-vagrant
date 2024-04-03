@@ -1,11 +1,12 @@
 ---
-- name: adding rpm key {{ vagrant_rpm_key }}
+- name: Adding rpm key {{ vagrant_rpm_key }}
   become: '{{ vagrant_escalate }}'
   become_user: root
-  rpm_key:
+  ansible.builtin.rpm_key:
     key: '{{ vagrant_rpm_key }}'
     state: present
-- name: installing {{ vagrant_tmp_pkg }}
+- name: Installing {{ vagrant_tmp_pkg }}
   become: '{{ vagrant_escalate }}'
   become_user: root
-  command: rpm -i {{ vagrant_tmp_pkg }}
+  ansible.builtin.yum:
+    name: '{{ vagrant_tmp_pkg }}'
