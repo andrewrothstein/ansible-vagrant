@@ -8,5 +8,5 @@
 - name: Installing {{ vagrant_tmp_pkg }}
   become: '{{ vagrant_escalate }}'
   become_user: root
-  ansible.builtin.yum:
+  ansible.builtin.dnf:
     name: '{{ vagrant_tmp_pkg }}'
