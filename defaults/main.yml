@@ -7,6 +7,8 @@ vagrant_ver:
 
 vagrant_escalate: true
 
+vagrant_dl_timeout: 10
+
 vagrant_apt_key: https://apt.releases.hashicorp.com/gpg
 vagrant_rpm_key: https://rpm.releases.hashicorp.com/gpg
 vagrant_mirror: https://releases.hashicorp.com/vagrant
