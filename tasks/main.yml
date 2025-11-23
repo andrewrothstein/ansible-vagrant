@@ -21,6 +21,7 @@
     dest: '{{ vagrant_tmp_pkg }}'
     checksum: '{{ vagrant_checksum }}'
     mode: '644'
+    timeout: '{{ vagrant_dl_timeout }}'
 
 - name: Installing with {{ vagrant_pkg_mgr }}
   ansible.builtin.include_tasks: '{{ vagrant_pkg_mgr }}.yml'
