@@ -69,4 +69,10 @@ dl_ver() {
     ripsha $ver $lshasums rpm $(rpm $ver -1 i686)
 }
 
-dl_ver 2 4 3 -1
+#dl_ver 2 4 3 -1
+dl_ver 2 4 4 -1
+dl_ver 2 4 5 -1
+dl_ver 2 4 6 -1
+dl_ver 2 4 7 -1
+dl_ver 2 4 8 -1
+dl_ver 2 4 9 -1
